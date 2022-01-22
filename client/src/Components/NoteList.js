@@ -1,10 +1,34 @@
 import React from 'react'
-import { Grid, Typography, Button, TextField } from '@material-ui/core'
+import {
+  Grid,
+  Typography,
+  Button,
+  TextField,
+  Paper,
+  makeStyles,
+} from '@material-ui/core'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import SaveIcon from '@mui/icons-material/Save'
 import CancelIcon from '@mui/icons-material/Cancel'
 import { disableNonEditingButtons } from '../LogicHelpers/LogicHelpers'
+
+const useStyles = makeStyles(() => ({
+  noteContainer: {
+    margin: '0 auto',
+  },
+  note: {
+    // maxWidth: '200px',
+    // width: '100%',
+    marginBottom: '1em',
+  },
+  noteText: {
+    maxHeight: '200px',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    padding: '1em',
+  },
+}))
 
 const NoteList = (props) => {
   const {
@@ -20,10 +44,18 @@ const NoteList = (props) => {
     noteBeingEdited,
   } = props
 
+  const classes = useStyles()
+
   /** Display notes if there are any saved */
   if (notes.length > 0) {
     return (
-      <Grid item container direction="column">
+      <Grid
+        container
+        item
+        justifyContent="space-between"
+        lg={11}
+        className={classes.noteContainer}
+      >
         {notes.map((note) => {
           /** If a note is being edited, display an editing text field, a save button, and a cancel button. */
           if (note._id === editingID) {
@@ -52,20 +84,40 @@ const NoteList = (props) => {
             /** For notes that are not being edited, display the note along with a delete button and an edit button. */
           } else {
             return (
-              <Grid item key={note._id}>
-                <Typography>{note.text}</Typography>
-                <Button
-                  onClick={() => deleteNote(note._id)}
-                  disabled={disableNonEditingButtons(notes, note, editingID)}
-                >
-                  <DeleteIcon />
-                </Button>
-                <Button
-                  onClick={() => editNote(note._id)}
-                  disabled={disableNonEditingButtons(notes, note, editingID)}
-                >
-                  <EditIcon />
-                </Button>
+              <Grid
+                container
+                item
+                // lg={4}
+                // justifyContent="space-around"
+                className={classes.note}
+              >
+                <Paper elevation={3}>
+                  <Grid item key={note._id}>
+                    <Typography className={classes.noteText}>
+                      {note.text}
+                    </Typography>
+                    <Button
+                      onClick={() => deleteNote(note._id)}
+                      disabled={disableNonEditingButtons(
+                        notes,
+                        note,
+                        editingID
+                      )}
+                    >
+                      <DeleteIcon />
+                    </Button>
+                    <Button
+                      onClick={() => editNote(note._id)}
+                      disabled={disableNonEditingButtons(
+                        notes,
+                        note,
+                        editingID
+                      )}
+                    >
+                      <EditIcon />
+                    </Button>
+                  </Grid>
+                </Paper>
               </Grid>
             )
           }

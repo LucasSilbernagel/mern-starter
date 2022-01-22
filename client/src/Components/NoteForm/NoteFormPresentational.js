@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField, Button, makeStyles, Paper, Grid } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   form: {
     padding: '40px 0',
   },
