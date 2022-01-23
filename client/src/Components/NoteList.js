@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import SaveIcon from '@mui/icons-material/Save'
 import CancelIcon from '@mui/icons-material/Cancel'
 import { disableNonEditingButtons } from '../LogicHelpers/LogicHelpers'
+import Masonry from '@mui/lab/Masonry'
 
 const useStyles = makeStyles(() => ({
   noteContainer: {
@@ -20,17 +21,10 @@ const useStyles = makeStyles(() => ({
   note: {
     maxWidth: '250px',
     width: '250px',
-    // width: '100%',
-    marginBottom: '1em',
-    marginRight: '1em',
-    height: 'unset',
   },
   noteText: {
-    maxHeight: '200px',
-    // overflowX: 'hidden',
-    // overflowY: 'auto',
+    maxHeight: '180px',
     padding: '1em',
-    // whiteSpace: 'nowrap',
     overflow: 'hidden',
   },
 }))
@@ -54,78 +48,69 @@ const NoteList = (props) => {
   /** Display notes if there are any saved */
   if (notes.length > 0) {
     return (
-      <Grid
-        container
-        item
-        // justifyContent="space-between"
-        lg={11}
-        className={classes.noteContainer}
-      >
-        {notes.map((note) => {
-          /** If a note is being edited, display an editing text field, a save button, and a cancel button. */
-          if (note._id === editingID) {
-            return (
-              <Grid item key={note._id}>
-                <TextField
-                  color="secondary"
-                  multiline
-                  variant="outlined"
-                  defaultValue={note.text}
-                  onChange={handleNoteTextChange}
-                  error={inputError}
-                  helperText={inputErrorText}
-                />
-                <Button
-                  onClick={saveNote}
-                  disabled={!noteBeingEdited.text.length > 0}
-                >
-                  <SaveIcon />
-                </Button>
-                <Button onClick={cancelEdit}>
-                  <CancelIcon />
-                </Button>
-              </Grid>
-            )
-            /** For notes that are not being edited, display the note along with a delete button and an edit button. */
-          } else {
-            return (
-              <Grid
-                item
-                // lg={4}
-                // justifyContent="space-around"
-                className={classes.note}
-              >
-                <Paper elevation={2}>
-                  <Grid item key={note._id}>
-                    <Typography className={classes.noteText}>
-                      {note.text}
-                    </Typography>
-                    <Button
-                      onClick={() => deleteNote(note._id)}
-                      disabled={disableNonEditingButtons(
-                        notes,
-                        note,
-                        editingID
-                      )}
-                    >
-                      <DeleteIcon />
-                    </Button>
-                    <Button
-                      onClick={() => editNote(note._id)}
-                      disabled={disableNonEditingButtons(
-                        notes,
-                        note,
-                        editingID
-                      )}
-                    >
-                      <EditIcon />
-                    </Button>
-                  </Grid>
-                </Paper>
-              </Grid>
-            )
-          }
-        })}
+      <Grid container item lg={11} className={classes.noteContainer}>
+        <Masonry columns={4} spacing={2}>
+          {notes.map((note) => {
+            /** If a note is being edited, display an editing text field, a save button, and a cancel button. */
+            if (note._id === editingID) {
+              return (
+                <Grid item key={note._id}>
+                  <TextField
+                    color="secondary"
+                    multiline
+                    variant="outlined"
+                    defaultValue={note.text}
+                    onChange={handleNoteTextChange}
+                    error={inputError}
+                    helperText={inputErrorText}
+                  />
+                  <Button
+                    onClick={saveNote}
+                    disabled={!noteBeingEdited.text.length > 0}
+                  >
+                    <SaveIcon />
+                  </Button>
+                  <Button onClick={cancelEdit}>
+                    <CancelIcon />
+                  </Button>
+                </Grid>
+              )
+              /** For notes that are not being edited, display the note along with a delete button and an edit button. */
+            } else {
+              return (
+                <Grid item className={classes.note}>
+                  <Paper elevation={2}>
+                    <Grid item key={note._id}>
+                      <Typography className={classes.noteText}>
+                        {note.text}
+                      </Typography>
+                      <Button
+                        onClick={() => deleteNote(note._id)}
+                        disabled={disableNonEditingButtons(
+                          notes,
+                          note,
+                          editingID
+                        )}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                      <Button
+                        onClick={() => editNote(note._id)}
+                        disabled={disableNonEditingButtons(
+                          notes,
+                          note,
+                          editingID
+                        )}
+                      >
+                        <EditIcon />
+                      </Button>
+                    </Grid>
+                  </Paper>
+                </Grid>
+              )
+            }
+          })}
+        </Masonry>
       </Grid>
     )
     /** Display a message if there are no notes to display. */
