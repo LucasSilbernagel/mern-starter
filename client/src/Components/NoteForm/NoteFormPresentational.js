@@ -29,7 +29,7 @@ const NoteFormPresentational = (props) => {
     <form onSubmit={saveNewNote} className={classes.form}>
       <Grid container direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <Paper elevation={3}>
+          <Paper elevation={2}>
             <TextField
               className={classes.input}
               color="secondary"

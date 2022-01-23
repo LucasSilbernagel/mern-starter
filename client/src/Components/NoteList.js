@@ -18,15 +18,20 @@ const useStyles = makeStyles(() => ({
     margin: '0 auto',
   },
   note: {
-    // maxWidth: '200px',
+    maxWidth: '250px',
+    width: '250px',
     // width: '100%',
     marginBottom: '1em',
+    marginRight: '1em',
+    height: 'unset',
   },
   noteText: {
     maxHeight: '200px',
-    overflowX: 'hidden',
-    overflowY: 'auto',
+    // overflowX: 'hidden',
+    // overflowY: 'auto',
     padding: '1em',
+    // whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
 }))
 
@@ -52,7 +57,7 @@ const NoteList = (props) => {
       <Grid
         container
         item
-        justifyContent="space-between"
+        // justifyContent="space-between"
         lg={11}
         className={classes.noteContainer}
       >
@@ -85,13 +90,12 @@ const NoteList = (props) => {
           } else {
             return (
               <Grid
-                container
                 item
                 // lg={4}
                 // justifyContent="space-around"
                 className={classes.note}
               >
-                <Paper elevation={3}>
+                <Paper elevation={2}>
                   <Grid item key={note._id}>
                     <Typography className={classes.noteText}>
                       {note.text}
