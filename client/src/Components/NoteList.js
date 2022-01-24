@@ -139,16 +139,7 @@ const NoteList = (props) => {
         </Masonry>
       </Grid>
     )
-    /** Display a message if there are no notes to display. */
-  } else {
-    return (
-      <Grid item container direction="column">
-        <Grid item>
-          <Typography>No notes left</Typography>
-        </Grid>
-      </Grid>
-    )
-  }
+  } else return null
 }
 
 export default NoteList
