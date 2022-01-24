@@ -59,86 +59,169 @@ const NoteList = (props) => {
 
   /** Display notes if there are any saved */
   if (notes.length > 0) {
-    return (
-      <Grid container item lg={11} className={classes.noteContainer}>
-        <Masonry columns={4} spacing={2}>
-          {notes.map((note) => {
-            /** If a note is being edited, display an editing text field, a save button, and a cancel button. */
-            if (note._id === editingID) {
-              return (
-                <Grid item key={note._id} className={classes.note}>
-                  <Paper elevation={2}>
-                    <Grid item>
-                      <TextField
-                        color="secondary"
-                        multiline
-                        variant="outlined"
-                        defaultValue={note.text}
-                        onChange={handleNoteTextChange}
-                        error={inputError}
-                        helperText={inputErrorText}
-                        className={classes.noteEditText}
-                        InputProps={{
-                          classes: {
-                            input: classes.inputText,
-                          },
-                        }}
-                      />
-                      <Grid className={classes.buttonContainer}>
-                        <Button
-                          onClick={saveNote}
-                          disabled={!noteBeingEdited.text.length > 0}
-                        >
-                          <SaveIcon />
-                        </Button>
-                        <Button onClick={cancelEdit}>
-                          <CancelIcon />
-                        </Button>
+    if (notes.length > 3) {
+      return (
+        <Grid container item lg={8} className={classes.noteContainer}>
+          <Masonry columns={4} spacing={2}>
+            {notes.map((note) => {
+              /** If a note is being edited, display an editing text field, a save button, and a cancel button. */
+              if (note._id === editingID) {
+                return (
+                  <Grid item key={note._id} className={classes.note}>
+                    <Paper elevation={2}>
+                      <Grid item>
+                        <TextField
+                          color="secondary"
+                          multiline
+                          variant="outlined"
+                          defaultValue={note.text}
+                          onChange={handleNoteTextChange}
+                          error={inputError}
+                          helperText={inputErrorText}
+                          className={classes.noteEditText}
+                          InputProps={{
+                            classes: {
+                              input: classes.inputText,
+                            },
+                          }}
+                        />
+                        <Grid className={classes.buttonContainer}>
+                          <Button
+                            onClick={saveNote}
+                            disabled={!noteBeingEdited.text.length > 0}
+                          >
+                            <SaveIcon />
+                          </Button>
+                          <Button onClick={cancelEdit}>
+                            <CancelIcon />
+                          </Button>
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </Paper>
-                </Grid>
-              )
-              /** For notes that are not being edited, display the note along with a delete button and an edit button. */
-            } else {
-              return (
-                <Grid item key={note._id} className={classes.note}>
-                  <Paper elevation={2}>
-                    <Grid item>
-                      <Typography className={classes.noteText}>
-                        {note.text}
-                      </Typography>
-                      <Grid className={classes.buttonContainer}>
-                        <Button
-                          onClick={() => deleteNote(note._id)}
-                          disabled={disableNonEditingButtons(
-                            notes,
-                            note,
-                            editingID
-                          )}
-                        >
-                          <DeleteIcon />
-                        </Button>
-                        <Button
-                          onClick={() => editNote(note._id)}
-                          disabled={disableNonEditingButtons(
-                            notes,
-                            note,
-                            editingID
-                          )}
-                        >
-                          <EditIcon />
-                        </Button>
+                    </Paper>
+                  </Grid>
+                )
+                /** For notes that are not being edited, display the note along with a delete button and an edit button. */
+              } else {
+                return (
+                  <Grid item key={note._id} className={classes.note}>
+                    <Paper elevation={2}>
+                      <Grid item>
+                        <Typography className={classes.noteText}>
+                          {note.text}
+                        </Typography>
+                        <Grid className={classes.buttonContainer}>
+                          <Button
+                            onClick={() => deleteNote(note._id)}
+                            disabled={disableNonEditingButtons(
+                              notes,
+                              note,
+                              editingID
+                            )}
+                          >
+                            <DeleteIcon />
+                          </Button>
+                          <Button
+                            onClick={() => editNote(note._id)}
+                            disabled={disableNonEditingButtons(
+                              notes,
+                              note,
+                              editingID
+                            )}
+                          >
+                            <EditIcon />
+                          </Button>
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </Paper>
-                </Grid>
-              )
-            }
-          })}
-        </Masonry>
-      </Grid>
-    )
+                    </Paper>
+                  </Grid>
+                )
+              }
+            })}
+          </Masonry>
+        </Grid>
+      )
+    } else {
+      return (
+        <Grid container item lg={8} className={classes.noteContainer}>
+          <Grid container columns={4} spacing={2}>
+            {notes.map((note) => {
+              /** If a note is being edited, display an editing text field, a save button, and a cancel button. */
+              if (note._id === editingID) {
+                return (
+                  <Grid item key={note._id} className={classes.note}>
+                    <Paper elevation={2}>
+                      <Grid item>
+                        <TextField
+                          color="secondary"
+                          multiline
+                          variant="outlined"
+                          defaultValue={note.text}
+                          onChange={handleNoteTextChange}
+                          error={inputError}
+                          helperText={inputErrorText}
+                          className={classes.noteEditText}
+                          InputProps={{
+                            classes: {
+                              input: classes.inputText,
+                            },
+                          }}
+                        />
+                        <Grid className={classes.buttonContainer}>
+                          <Button
+                            onClick={saveNote}
+                            disabled={!noteBeingEdited.text.length > 0}
+                          >
+                            <SaveIcon />
+                          </Button>
+                          <Button onClick={cancelEdit}>
+                            <CancelIcon />
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Paper>
+                  </Grid>
+                )
+                /** For notes that are not being edited, display the note along with a delete button and an edit button. */
+              } else {
+                return (
+                  <Grid item key={note._id} className={classes.note}>
+                    <Paper elevation={2}>
+                      <Grid item>
+                        <Typography className={classes.noteText}>
+                          {note.text}
+                        </Typography>
+                        <Grid className={classes.buttonContainer}>
+                          <Button
+                            onClick={() => deleteNote(note._id)}
+                            disabled={disableNonEditingButtons(
+                              notes,
+                              note,
+                              editingID
+                            )}
+                          >
+                            <DeleteIcon />
+                          </Button>
+                          <Button
+                            onClick={() => editNote(note._id)}
+                            disabled={disableNonEditingButtons(
+                              notes,
+                              note,
+                              editingID
+                            )}
+                          >
+                            <EditIcon />
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Paper>
+                  </Grid>
+                )
+              }
+            })}
+          </Grid>
+        </Grid>
+      )
+    }
   } else return null
 }
 

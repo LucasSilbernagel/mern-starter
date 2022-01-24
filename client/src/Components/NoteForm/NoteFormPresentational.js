@@ -8,6 +8,11 @@ const useStyles = makeStyles(() => ({
   input: {
     width: '400px',
   },
+  inputOverflow: {
+    width: '400px',
+    maxHeight: '100px',
+    overflowY: 'auto',
+  },
   hiddenButton: {
     height: '3.3em',
   },
@@ -31,7 +36,11 @@ const NoteFormPresentational = (props) => {
         <Grid item>
           <Paper elevation={2}>
             <TextField
-              className={classes.input}
+              className={
+                newNote.text.length > 100
+                  ? classes.inputOverflow
+                  : classes.input
+              }
               color="secondary"
               multiline
               label="Take a note..."
