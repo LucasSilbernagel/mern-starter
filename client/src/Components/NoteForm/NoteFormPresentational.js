@@ -1,12 +1,15 @@
 import React from 'react'
 import { TextField, Button, makeStyles, Paper, Grid } from '@material-ui/core'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   form: {
     padding: '40px 0',
   },
   input: {
     width: '400px',
+    [theme.breakpoints.down('xs')]: {
+      width: '250px',
+    },
   },
   inputOverflow: {
     width: '400px',
