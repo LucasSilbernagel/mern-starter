@@ -54,8 +54,15 @@ const NoteList = (props) => {
       )
     } else {
       return (
-        <Grid container item lg={8} className={classes.noteContainer}>
-          <Grid container columns={4} spacing={2}>
+        <Grid
+          container
+          item
+          lg={8}
+          sm={10}
+          xs={12}
+          className={classes.noteContainer}
+        >
+          <Grid container item spacing={2}>
             {notes.map((note) => {
               return (
                 <NoteContent

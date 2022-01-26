@@ -13,10 +13,14 @@ import SaveIcon from '@mui/icons-material/Save'
 import CancelIcon from '@mui/icons-material/Cancel'
 import { disableNonEditingButtons } from '../LogicHelpers/LogicHelpers'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   note: {
     maxWidth: '250px',
     width: '250px',
+    [theme.breakpoints.down('xs')]: {
+      width: '180px',
+      maxWidth: '180px',
+    },
   },
   noteText: {
     maxHeight: '180px',
