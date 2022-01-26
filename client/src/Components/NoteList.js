@@ -34,6 +34,7 @@ const NoteList = (props) => {
             {notes.map((note) => {
               return (
                 <NoteContent
+                  key={note._id}
                   note={note}
                   notes={notes}
                   editingID={editingID}
@@ -58,6 +59,7 @@ const NoteList = (props) => {
             {notes.map((note) => {
               return (
                 <NoteContent
+                  key={note._id}
                   note={note}
                   notes={notes}
                   editingID={editingID}
