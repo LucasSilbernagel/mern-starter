@@ -30,7 +30,7 @@ const NoteList = (props) => {
     if (notes.length > 3) {
       return (
         <Grid container item lg={8} className={classes.noteContainer}>
-          <Masonry columns={4} spacing={2}>
+          <Masonry spacing={2}>
             {notes.map((note) => {
               return (
                 <NoteContent
