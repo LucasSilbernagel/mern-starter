@@ -23,7 +23,7 @@ const NoteViewPresentational = (props) => {
   } = props
 
   return (
-    <Grid container item>
+    <Grid container>
       <Grid item container lg={12} justifyContent="center">
         <NoteFormLogical
           getNotes={getNotes}

@@ -80,7 +80,7 @@ const NoteViewLogical = () => {
             getNotes()
           }
         })
-        .then((res) => {
+        .then(() => {
           setEditingID('')
           setNoteBeingEdited({})
           setNewNote({ text: '' })

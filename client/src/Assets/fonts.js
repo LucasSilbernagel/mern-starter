@@ -10,8 +10,8 @@ const MetropolisRegular = {
   fontDisplay: 'swap',
   fontWeight: 400,
   src: `
-      local('Metrolpolis'),
-      local('Metrolpolis-Medium'),
+      local('Metropolis'),
+      local('Metropolis-Medium'),
       url(${MetropolisMediumFont}) format('woff')
     `,
 }
@@ -22,8 +22,8 @@ const MetropolisBold = {
   fontDisplay: 'swap',
   fontWeight: 500,
   src: `
-      local('Metrolpolis'),
-      local('Metrolpolis-Bold'),
+      local('Metropolis'),
+      local('Metropolis-Bold'),
       url(${MetropolisBoldFont}) format('woff')
     `,
 }

@@ -1,7 +1,7 @@
 {
   "name": "mern-starter",
   "version": "1.0.0",
-  "description": "A simple notes app built with MongoDB, Express, React, and Node. A good starting point for any MERN project.",
+  "description": "A simple notes app built with MongoDB, Express, React, and Node. A good starting point for any MERN project. Styled with Material-UI and formatted with Prettier.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,12 +12,6 @@
   "author": "Lucas Silbernagel",
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@material-ui/core": "^4.12.3",
-    "@mui/icons-material": "^5.3.0",
-    "@mui/lab": "^5.0.0-alpha.65",
-    "@mui/material": "^5.3.0",
     "body-parser": "^1.19.1",
     "dotenv": "^6.1.0",
     "express": "^4.17.2",
