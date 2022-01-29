@@ -1,7 +1,7 @@
 {
   "name": "mern-starter",
   "version": "1.0.0",
-  "description": "A simple notes app built with MongoDB, Express, React, and Node. A good starting point for any MERN project. Styled with Material-UI and formatted with Prettier.",
+  "description": "A simple notes app built with MongoDB, Express, React, and Node. A good starting point for any MERN project. Styled with MUI and formatted with Prettier.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

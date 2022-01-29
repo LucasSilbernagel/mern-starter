@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple notes app built with MongoDB, Express, React, and Node. A good starting point for any MERN project. Styled with Material-UI and formatted with Prettier.
+A simple notes app built with MongoDB, Express, React, and Node. A good starting point for any MERN project. Styled with MUI and formatted with Prettier.
 
 ## Run Locally
 
