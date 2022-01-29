@@ -1,25 +1,5 @@
 import React from 'react'
-import { TextField, Button, makeStyles, Paper, Grid } from '@material-ui/core'
-
-const useStyles = makeStyles((theme) => ({
-  form: {
-    padding: '40px 0',
-  },
-  input: {
-    width: '400px',
-    [theme.breakpoints.down('xs')]: {
-      width: '250px',
-    },
-  },
-  inputOverflow: {
-    width: '400px',
-    maxHeight: '100px',
-    overflowY: 'auto',
-  },
-  hiddenButton: {
-    height: '3.3em',
-  },
-}))
+import { TextField, Button, Paper, Grid } from '@mui/material'
 
 const NoteFormPresentational = (props) => {
   const {
@@ -31,18 +11,30 @@ const NoteFormPresentational = (props) => {
     editingID,
   } = props
 
-  const classes = useStyles()
-
   return (
-    <form onSubmit={saveNewNote} className={classes.form}>
+    <form
+      onSubmit={saveNewNote}
+      style={{
+        padding: '40px 0',
+      }}
+    >
       <Grid container direction="column" alignItems="center" spacing={2}>
         <Grid item>
           <Paper elevation={2}>
             <TextField
-              className={
+              sx={
                 newNote.text.length > 100
-                  ? classes.inputOverflow
-                  : classes.input
+                  ? {
+                      width: '400px',
+                      maxHeight: '100px',
+                      overflowY: 'auto',
+                    }
+                  : {
+                      width: {
+                        xs: '250px',
+                        sm: '400px',
+                      },
+                    }
               }
               color="secondary"
               multiline
@@ -70,7 +62,12 @@ const NoteFormPresentational = (props) => {
             </Button>
           </Grid>
         ) : (
-          <Grid item className={classes.hiddenButton}></Grid>
+          <Grid
+            item
+            sx={{
+              height: '3.3em',
+            }}
+          ></Grid>
         )}
       </Grid>
     </form>

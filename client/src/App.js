@@ -1,7 +1,7 @@
 import React from 'react'
-import { ThemeProvider } from '@material-ui/core'
+import { ThemeProvider } from '@mui/material/styles'
 import NoteViewLogical from './Views/NoteView/NoteViewLogical'
-import { Grid } from '@material-ui/core'
+import { Grid } from '@mui/material'
 import { lightTheme } from './themes'
 
 const App = () => {

@@ -1,13 +1,7 @@
 import React from 'react'
-import { Grid, makeStyles } from '@material-ui/core'
+import { Grid } from '@mui/material'
 import Masonry from '@mui/lab/Masonry'
 import NoteContent from './NoteContent'
-
-const useStyles = makeStyles(() => ({
-  noteContainer: {
-    margin: '0 auto',
-  },
-}))
 
 const NoteList = (props) => {
   const {
@@ -23,18 +17,20 @@ const NoteList = (props) => {
     noteBeingEdited,
   } = props
 
-  const classes = useStyles()
-
   /** Display notes if there are any saved */
   if (notes.length > 0) {
     if (notes.length > 3) {
       return (
-        <Grid container item lg={8} md={10} className={classes.noteContainer}>
-          <Masonry
-            spacing={2}
-            columns={{ xs: 2, sm: 3, md: 4, lg: 5, xl: 6 }}
-            className={classes.masonry}
-          >
+        <Grid
+          container
+          item
+          lg={8}
+          md={10}
+          sx={{
+            margin: '0 auto',
+          }}
+        >
+          <Masonry spacing={2} columns={{ xs: 2, sm: 3, md: 4, lg: 5, xl: 6 }}>
             {notes.map((note) => {
               return (
                 <NoteContent
@@ -64,7 +60,9 @@ const NoteList = (props) => {
           lg={8}
           sm={10}
           xs={12}
-          className={classes.noteContainer}
+          sx={{
+            margin: '0 auto',
+          }}
         >
           <Grid container item spacing={2}>
             {notes.map((note) => {
