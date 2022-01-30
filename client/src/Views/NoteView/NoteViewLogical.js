@@ -9,10 +9,6 @@ const NoteViewLogical = () => {
   const [editingID, setEditingID] = useState('')
   /** The note that is being edited */
   const [noteBeingEdited, setNoteBeingEdited] = useState({})
-  /** Boolean to determine whether an input has an error */
-  const [inputError, setInputError] = useState(false)
-  /** Error message to display for an input */
-  const [inputErrorText, setInputErrorText] = useState('')
   /** A new note */
   const [newNote, setNewNote] = useState({ text: '' })
 
@@ -49,8 +45,6 @@ const NoteViewLogical = () => {
   const editNote = (id) => {
     setEditingID(id)
     setNoteBeingEdited(notes.find((note) => note._id === id))
-    setInputError(false)
-    setInputErrorText('')
   }
 
   /** Change the text of a note as the user types into the editing field */
@@ -66,8 +60,6 @@ const NoteViewLogical = () => {
   const cancelEdit = () => {
     setEditingID('')
     setNoteBeingEdited({})
-    setInputError(false)
-    setInputErrorText('')
   }
 
   /** Save an edited note to the database */
@@ -86,9 +78,6 @@ const NoteViewLogical = () => {
           setNewNote({ text: '' })
         })
         .catch((err) => console.log(err))
-    } else {
-      setInputError(true)
-      setInputErrorText('Missing text')
     }
   }
 
@@ -102,10 +91,6 @@ const NoteViewLogical = () => {
       saveNote={saveNote}
       cancelEdit={cancelEdit}
       handleNoteTextChange={handleNoteTextChange}
-      inputError={inputError}
-      setInputError={setInputError}
-      inputErrorText={inputErrorText}
-      setInputErrorText={setInputErrorText}
       newNote={newNote}
       setNewNote={setNewNote}
       noteBeingEdited={noteBeingEdited}

@@ -13,24 +13,16 @@ const NoteViewPresentational = (props) => {
     saveNote,
     cancelEdit,
     handleNoteTextChange,
-    inputError,
-    setInputError,
-    inputErrorText,
-    setInputErrorText,
     newNote,
     setNewNote,
     noteBeingEdited,
   } = props
 
   return (
-    <Grid container>
-      <Grid item container lg={12} justifyContent="center">
+    <Grid container item>
+      <Grid container item lg={12} justifyContent="center">
         <NoteFormLogical
           getNotes={getNotes}
-          inputError={inputError}
-          setInputError={setInputError}
-          inputErrorText={inputErrorText}
-          setInputErrorText={setInputErrorText}
           editingID={editingID}
           newNote={newNote}
           setNewNote={setNewNote}
@@ -45,8 +37,6 @@ const NoteViewPresentational = (props) => {
           saveNote={saveNote}
           cancelEdit={cancelEdit}
           handleNoteTextChange={handleNoteTextChange}
-          inputError={inputError}
-          inputErrorText={inputErrorText}
           noteBeingEdited={noteBeingEdited}
         />
       </Grid>

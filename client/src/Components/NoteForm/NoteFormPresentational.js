@@ -2,14 +2,7 @@ import React from 'react'
 import { TextField, Button, Paper, Grid } from '@mui/material'
 
 const NoteFormPresentational = (props) => {
-  const {
-    saveNewNote,
-    handleChange,
-    newNote,
-    inputError,
-    inputErrorText,
-    editingID,
-  } = props
+  const { saveNewNote, handleChange, newNote, editingID } = props
 
   return (
     <form
@@ -43,26 +36,27 @@ const NoteFormPresentational = (props) => {
               onChange={handleChange}
               value={newNote.text}
               variant="outlined"
-              error={editingID.length ? false : inputError}
-              helperText={editingID.length ? '' : inputErrorText}
               disabled={editingID.length > 0}
             />
           </Paper>
         </Grid>
         {newNote.text.length > 0 ? (
-          <Grid item>
-            <Button
-              type="submit"
-              disabled={editingID.length > 0 || !newNote.text.length > 0}
-              variant="contained"
-              color="secondary"
-              elevation={3}
-            >
-              Save note
-            </Button>
+          <Grid container item justifyContent="center">
+            <Grid item>
+              <Button
+                type="submit"
+                disabled={editingID.length > 0 || !newNote.text.length > 0}
+                variant="contained"
+                color="secondary"
+                elevation={3}
+              >
+                Save note
+              </Button>
+            </Grid>
           </Grid>
         ) : (
           <Grid
+            container
             item
             sx={{
               height: '3.3em',

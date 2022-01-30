@@ -12,8 +12,6 @@ const NoteList = (props) => {
     saveNote,
     cancelEdit,
     handleNoteTextChange,
-    inputError,
-    inputErrorText,
     noteBeingEdited,
   } = props
 
@@ -39,8 +37,6 @@ const NoteList = (props) => {
                   notes={notes}
                   editingID={editingID}
                   handleNoteTextChange={handleNoteTextChange}
-                  inputError={inputError}
-                  inputErrorText={inputErrorText}
                   saveNote={saveNote}
                   noteBeingEdited={noteBeingEdited}
                   cancelEdit={cancelEdit}
@@ -73,8 +69,6 @@ const NoteList = (props) => {
                   notes={notes}
                   editingID={editingID}
                   handleNoteTextChange={handleNoteTextChange}
-                  inputError={inputError}
-                  inputErrorText={inputErrorText}
                   saveNote={saveNote}
                   noteBeingEdited={noteBeingEdited}
                   cancelEdit={cancelEdit}

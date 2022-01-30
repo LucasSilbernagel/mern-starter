@@ -7,7 +7,7 @@ import { lightTheme } from './themes'
 const App = () => {
   return (
     <ThemeProvider theme={lightTheme}>
-      <Grid container item lg={12}>
+      <Grid container>
         <NoteViewLogical />
       </Grid>
     </ThemeProvider>

@@ -12,8 +12,6 @@ const NoteContent = (props) => {
     notes,
     editingID,
     handleNoteTextChange,
-    inputError,
-    inputErrorText,
     saveNote,
     noteBeingEdited,
     cancelEdit,
@@ -39,7 +37,7 @@ const NoteContent = (props) => {
         }}
       >
         <Paper elevation={2}>
-          <Grid item container>
+          <Grid container>
             <Grid item>
               <TextField
                 color="secondary"
@@ -47,8 +45,6 @@ const NoteContent = (props) => {
                 variant="outlined"
                 defaultValue={note.text}
                 onChange={handleNoteTextChange}
-                error={inputError}
-                helperText={inputErrorText}
                 sx={{
                   maxHeight: '212px',
                   width: '100%',

@@ -3,23 +3,10 @@ import axios from 'axios'
 import NoteFormPresentational from './NoteFormPresentational'
 
 const NoteFormLogical = (props) => {
-  const {
-    getNotes,
-    inputError,
-    inputErrorText,
-    setInputError,
-    setInputErrorText,
-    editingID,
-    newNote,
-    setNewNote,
-  } = props
+  const { getNotes, editingID, newNote, setNewNote } = props
 
   /** Keep track of the new note text as the user types in the text field */
   const handleChange = (e) => {
-    if (e.target.value.length > 0) {
-      setInputError(false)
-      setInputErrorText('')
-    }
     setNewNote({
       text: e.target.value,
     })
@@ -38,9 +25,6 @@ const NoteFormLogical = (props) => {
           }
         })
         .catch((err) => console.log(err))
-    } else {
-      setInputError(true)
-      setInputErrorText('Input field required')
     }
   }
 
@@ -49,8 +33,6 @@ const NoteFormLogical = (props) => {
       saveNewNote={saveNewNote}
       handleChange={handleChange}
       newNote={newNote}
-      inputError={inputError}
-      inputErrorText={inputErrorText}
       editingID={editingID}
     />
   )
