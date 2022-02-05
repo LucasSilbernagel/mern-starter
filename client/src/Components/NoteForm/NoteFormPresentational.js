@@ -29,7 +29,7 @@ const NoteFormPresentational = (props) => {
                       },
                     }
               }
-              color="secondary"
+              color="info"
               multiline
               label="Take a note..."
               size="small"
@@ -47,7 +47,7 @@ const NoteFormPresentational = (props) => {
                 type="submit"
                 disabled={editingID.length > 0 || !newNote.text.length > 0}
                 variant="contained"
-                color="secondary"
+                color="info"
                 elevation={3}
               >
                 Save note

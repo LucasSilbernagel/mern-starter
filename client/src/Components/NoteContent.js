@@ -40,7 +40,7 @@ const NoteContent = (props) => {
           <Grid container>
             <Grid item>
               <TextField
-                color="secondary"
+                color="info"
                 multiline
                 variant="outlined"
                 defaultValue={note.text}
